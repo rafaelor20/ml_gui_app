@@ -3,6 +3,10 @@ from tensorflow.keras import models
 from PIL import Image
 import numpy as np
 
+import os
+print(os.getcwd())
+
+
 class_names = {
     0: 'airplane',
     1: 'automobile',
@@ -16,20 +20,24 @@ class_names = {
     9: 'truck',
 }
 
-model = models.load_model("baseline_mariya.keras")
+model = models.load_model("baseline_mariya.h5")
 
 def predict_image(model, path_to_img):
-    img = Image.open(path_to_img)
-    img = img.convert("RGB")
-    img = img.resize((32, 32))
-    data = np.asarray(img)
-    data = data / 255
-    probs = model.predict(np.array([data])[:1])
+    try:
+        img = Image.open(path_to_img)
+        img = img.convert("RGB")
+        img = img.resize((32, 32))
+        data = np.asarray(img)
+        data = data / 255
+        probs = model.predict(np.array([data])[:1])
 
-    top_prob = probs.max()
-    top_pred = class_names[np.argmax(probs)]
-    
-    return top_prob, top_pred
+        top_prob = probs.max()
+        top_pred = class_names[np.argmax(probs)]
+
+        return top_prob, top_pred
+    except Exception as e:
+        return 0, f"Error: {e}"
+
     
 content = ""
 img_path = "placeholder_image.png"
