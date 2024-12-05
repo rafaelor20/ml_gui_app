@@ -3,10 +3,6 @@ from tensorflow.keras import models
 from PIL import Image
 import numpy as np
 
-import os
-print(os.getcwd())
-
-
 class_names = {
     0: 'airplane',
     1: 'automobile',
@@ -66,11 +62,6 @@ def on_change(state, var_name, var_val):
         state.pred = "this is a " + top_pred
         state.img_path = var_val
     #print(var_name, var_val)
-
-
-
-
-
 
 app = Gui(page=index)
 
