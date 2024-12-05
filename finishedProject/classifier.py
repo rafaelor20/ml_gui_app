@@ -66,4 +66,4 @@ def on_change(state, var_name, var_val):
 app = Gui(page=index)
 
 if __name__ == "__main__":
-    app.run(use_reloader=True)
+    app.run(use_reloader=True, allow_unsafe_werkzeug=True, host="0.0.0.0", port=5000)
