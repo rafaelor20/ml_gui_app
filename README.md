@@ -31,3 +31,7 @@ The complete app is also live and running on Taipy's cloud: https://classifier.t
 
 - Neural Pattern from: freepik.com
 - Brain Icon from: flaticon.com
+
+## commands to create and run docker container
+docker build -t taipy-tensorflow-app .
+docker run -p 5000:5000 taipy-tensorflow-app
